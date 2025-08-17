@@ -1,0 +1,24 @@
+{
+  "name": "task-tracker-cli",
+  "version": "1.0.0",
+  "type": "module",
+  "bin": {
+    "task-cli": "./index.js"
+  },
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ziadMorjan/Task-Tracker-CLI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ziadMorjan/Task-Tracker-CLI/issues"
+  },
+  "homepage": "https://github.com/ziadMorjan/Task-Tracker-CLI#readme"
+}
