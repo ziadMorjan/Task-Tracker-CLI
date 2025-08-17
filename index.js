@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import {
-	addTask
+	addTask,
+	list
 } from "./controller.js"
 
 const [, , comand] = process.argv;
@@ -24,7 +25,7 @@ const [, , comand] = process.argv;
 				console.log(`${comand} comand`);
 				break;
 			case 'list':
-				console.log(`${comand} comand`);
+				await list();
 				break;
 
 			default:

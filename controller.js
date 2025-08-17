@@ -16,3 +16,22 @@ export const addTask = async () => {
 	await writeDataToFile(tasks);
 	console.log(`Task added successfully (ID: ${newTask.id})`);
 }
+
+export const list = async () => {
+	const [, , , status] = process.argv;
+	let tasks = await readDataFromFile();
+	if (status) {
+		if (!['todo', 'in-progress', 'done'].includes(status))
+			throw new Error("Unknown status!\nAvailable: todo, in-progress, done");
+		tasks = tasks.filter(task => task.status === status);
+		if (tasks.length === 0) {
+			console.log(`There is no tasks with status: ${status}.`);
+			return;
+		}
+	}
+	if (tasks.length === 0) {
+		console.log(`There is no any task.`);
+		return;
+	}
+	console.log(tasks);
+}
