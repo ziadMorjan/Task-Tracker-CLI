@@ -35,3 +35,21 @@ export const list = async () => {
 	}
 	console.log(tasks);
 }
+
+export const updateTask = async () => {
+	const [, , , id, newDesc] = process.argv;
+	if (!id || !newDesc)
+		throw new Error("Invalid update command!\nUpdate command must be like: update 'taskId' 'new description'");
+
+	const tasks = await readDataFromFile();
+	const index = tasks.findIndex(task => task.id === id);
+
+	if (index === -1)
+		throw new Error(`No task found with id: ${id}`);
+
+	tasks[index].description = newDesc;
+	tasks[index].updatedAt = new Date(Date.now());
+
+	await writeDataToFile(tasks);
+	console.log(`Task updated successfully (ID: ${tasks[index].id})`);
+}

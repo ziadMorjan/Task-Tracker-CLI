@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 import {
 	addTask,
-	list
+	list,
+	updateTask
 } from "./controller.js"
 
 const [, , comand] = process.argv;
@@ -13,7 +14,7 @@ const [, , comand] = process.argv;
 				await addTask()
 				break;
 			case 'update':
-				console.log(`${comand} comand`);
+				await updateTask();
 				break;
 			case 'delete':
 				console.log(`${comand} comand`);
@@ -32,6 +33,6 @@ const [, , comand] = process.argv;
 				throw new Error("Unknown command!\nAvailable: add, update, delete, mark-in-progress, mark-done, list");
 		}
 	} catch (error) {
-		console.error(error);
+		console.error(error.message);
 	}
 })();
