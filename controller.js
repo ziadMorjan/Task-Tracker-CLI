@@ -38,7 +38,7 @@ export const list = async () => {
 	}
 
 	tasks.forEach((t) => {
-		let log = `[${t.id}] ${t.description} | ${t.status} | created: ${t.createdAt}`;
+		let log = `[${t.id}] ${t.description} | status: ${t.status} | created: ${t.createdAt}`;
 		if (t.updatedAt) {
 			log += ` | updated: ${t.updatedAt}`;
 		}
