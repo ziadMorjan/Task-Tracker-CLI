@@ -4,7 +4,8 @@ import {
 	list,
 	updateTask,
 	deleteTask,
-	markInProgress
+	markInProgress,
+	markDone
 } from "./controller.js"
 
 const [, , comand] = process.argv;
@@ -25,7 +26,7 @@ const [, , comand] = process.argv;
 				await markInProgress();
 				break;
 			case 'mark-done':
-				console.log(`${comand} comand`);
+				await markDone();
 				break;
 			case 'list':
 				await list();

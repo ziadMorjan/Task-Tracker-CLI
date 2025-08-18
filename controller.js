@@ -87,3 +87,20 @@ export const markInProgress = async () => {
 	await writeDataToFile(tasks);
 	console.log(`Task marked in-progress successfully (ID: ${tasks[index].id})`);
 }
+
+export const markDone = async () => {
+	const [, , , id] = process.argv;
+	if (!id)
+		throw new Error("Invalid mark-done command!\nmark-done command must be like: mark-done 'taskId'");
+
+	const tasks = await readDataFromFile();
+	const index = tasks.findIndex(task => task.id === id);
+
+	if (index === -1)
+		throw new Error(`No task found with id: ${id}`);
+
+	tasks[index].status = 'done';
+
+	await writeDataToFile(tasks);
+	console.log(`Task marked done successfully (ID: ${tasks[index].id})`);
+}
