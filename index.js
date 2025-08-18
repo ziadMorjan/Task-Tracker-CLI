@@ -2,7 +2,8 @@
 import {
 	addTask,
 	list,
-	updateTask
+	updateTask,
+	deleteTask
 } from "./controller.js"
 
 const [, , comand] = process.argv;
@@ -11,13 +12,13 @@ const [, , comand] = process.argv;
 	try {
 		switch (comand) {
 			case 'add':
-				await addTask()
+				await addTask();
 				break;
 			case 'update':
 				await updateTask();
 				break;
 			case 'delete':
-				console.log(`${comand} comand`);
+				await deleteTask();
 				break;
 			case 'mark-in-progress':
 				console.log(`${comand} comand`);

@@ -53,3 +53,20 @@ export const updateTask = async () => {
 	await writeDataToFile(tasks);
 	console.log(`Task updated successfully (ID: ${tasks[index].id})`);
 }
+
+export const deleteTask = async () => {
+	const [, , , id] = process.argv;
+	if (!id)
+		throw new Error("Invalid delete command!\nDelete command must be like: delete 'taskId'");
+
+	let tasks = await readDataFromFile();
+	const index = tasks.findIndex(task => task.id === id);
+
+	if (index === -1)
+		throw new Error(`No task found with id: ${id}`);
+
+	tasks = tasks.filter(task => task.id !== id);
+
+	await writeDataToFile(tasks);
+	console.log(`Task deleted successfully (ID: ${id})`);
+}
