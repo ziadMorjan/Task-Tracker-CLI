@@ -4,36 +4,36 @@ import {
 	list,
 	updateTask,
 	deleteTask,
-	markInProgress,
-	markDone
-} from "./controller.js"
+	markStatus,
+} from "./controller.js";
 
-const [, , comand] = process.argv;
+const [, , command] = process.argv;
 
 (async () => {
 	try {
-		switch (comand) {
-			case 'add':
+		switch (command) {
+			case "add":
 				await addTask();
 				break;
-			case 'update':
+			case "update":
 				await updateTask();
 				break;
-			case 'delete':
+			case "delete":
 				await deleteTask();
 				break;
-			case 'mark-in-progress':
-				await markInProgress();
+			case "mark-in-progress":
+				await markStatus("in-progress");
 				break;
-			case 'mark-done':
-				await markDone();
+			case "mark-done":
+				await markStatus("done");
 				break;
-			case 'list':
+			case "list":
 				await list();
 				break;
-
 			default:
-				throw new Error("Unknown command!\nAvailable: add, update, delete, mark-in-progress, mark-done, list");
+				throw new Error(
+					"Unknown command!\nAvailable: add, update, delete, mark-in-progress, mark-done, list"
+				);
 		}
 	} catch (error) {
 		console.error(error.message);
